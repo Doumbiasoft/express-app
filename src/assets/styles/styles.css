@@ -1,0 +1,40 @@
+.home {
+  background-color: blueviolet;
+  color: white;
+}
+.form {
+  background-color: goldenrod;
+  color: black;
+}
+
+a {
+  color: dodgerblue;
+  font-size: large;
+  text-decoration: none;
+}
+input[type="text"] {
+  width: 250px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  color: #333;
+  background-color: #f9f9f9;
+}
+
+input[type="text"]:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+input[type="button"],
+input[type="submit"],
+input[type="reset"] {
+  background-color: #04aa6d;
+  border: none;
+  color: white;
+  padding: 12px 32px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+}
