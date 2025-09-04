@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { getForm, getHome, postForm } from "../controllers/appController";
+import { getForm, getHome, postForm } from "../controllers/app.controller";
 import { catchAsync } from "../utils/catchAsync";
 const router = Router();
 
