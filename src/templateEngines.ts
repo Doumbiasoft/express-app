@@ -22,14 +22,23 @@ export const configureTemplateEngine = (app: Application) => {
     fs.readFile(filePath, "utf-8", (err, content) => {
       if (err) return callback(err);
       let rendered = content;
-      // Loop through all keys in options
       for (const [key, value] of Object.entries(options)) {
-        const regex = new RegExp(`#${key}#`, "g"); // match #key#
-        rendered = rendered.replace(regex, String(value ?? ""));
+        const regex = new RegExp(`#${key}#`, "g");
+        // Handle safely
+        let replacement: string;
+        if (value === null || value === undefined) {
+          replacement = "";
+        } else if (typeof value === "object") {
+          // JSON stringify objects & arrays
+          replacement = JSON.stringify(value);
+        } else {
+          replacement = String(value);
+        }
+        rendered = rendered.replace(regex, replacement);
       }
       return callback(null, rendered);
     });
   });
-  app.set("views", "./src/views"); // specify the views directory
-  app.set("view engine", "html"); // register the template engine
+  app.set("views", "./src/views");
+  app.set("view engine", "html");
 };
